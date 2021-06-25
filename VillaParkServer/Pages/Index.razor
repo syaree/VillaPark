@@ -9,8 +9,9 @@
 <h2 class="bg-light border p-2">
     First Room
 </h2>
-Room: @_room.RoomName <br>
-Price: @_room.Price <br>
+Room: @_room.RoomName <br />
+Price: @_room.Price <br />
+<input type="number" @bind-value="_room.Price" @bind-value:event="oninput" />
 
 @code
 {
