@@ -13,15 +13,30 @@ Room: @_room.RoomName <br />
 Price: @_room.Price <br />
 <input type="number" @bind-value="_room.Price" @bind-value:event="oninput" /> <br />
 Is active? <input type="checkbox" @bind-value="_room.IsActive" checked="@(_room.IsActive ? "checked" : null)" /> <br />
-This room is @(_room.IsActive ? "active" : "inactive")
+This room is @(_room.IsActive ? "active" : "inactive") <br />
+
+<select @bind="_selectedProp">
+    @foreach (var prop in _room.RoomProps)
+    {
+        <option value="@prop.Id">@prop.Name</option>
+    }
+</select>
+<span>The selected room prop: @_selectedProp</span>
 
 @code
 {
+    string _selectedProp = "";
     readonly Room _room = new Room()
     {
         Id = 111,
         IsActive = true,
         Price = 22.1,
-        RoomName = "Kamar 1"
+        RoomName = "Kamar 1",
+        RoomProps = new List<RoomProp>()
+        {
+            new RoomProp() { Id = 1111, Name = "Sq Ft", Value = "100" },
+            new RoomProp() { Id = 1112, Name = "So Bt", Value = "190" },
+            new RoomProp() { Id = 1113, Name = "Po BO", Value = "220" },
+        }
     };
 }
