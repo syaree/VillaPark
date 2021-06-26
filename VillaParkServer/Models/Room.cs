@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace VillaParkServer.Models
 {
     public class Room
@@ -6,5 +8,6 @@ namespace VillaParkServer.Models
         public string RoomName { get; set; }
         public double Price { get; set; }
         public bool IsActive { get; set; }
+        public List<RoomProp> RoomProps { get; set; }
     }
 }
